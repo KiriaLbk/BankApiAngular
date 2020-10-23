@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="title">Курсы валют (USD, EUR, RUB) по
+    отношению к белорусскому рублю</p>
+  <div class="sort">
+    <input placeholder="Currency" appForm [(ngModel)]="value" type="text" />
+  </div>
+<table>
+ <tr>
+   <td></td>
+   <td *ngFor="let date of dates[0].value.date">{{date}}</td>
+ </tr>
+ <tr *ngFor="let elem of dates | form : value">
+  <td>{{elem.value.name}}</td>
+  <td *ngFor="let el of elem.value.course | minmax : elem; let i = index" [ngClass]="{'isMax': i === elem.max, 'isMin': i === elem.min}">{{el}}</td>
+ </tr>
+</table>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <span>с</span>
+    <input [(ngModel)]="begin" type="date" name="date" id="date">
+    <span>по</span>
+    <input type="date" name="date" [(ngModel)]="end" id="date">
+  </div>
+  <button type='submit'>Изменить период</button>
+</form>
+</div>
