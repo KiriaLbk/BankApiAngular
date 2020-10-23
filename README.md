@@ -1,3 +1,3 @@
 # BankApiAngular
 ## Frontend
-* Angular
+* Angular + RxJs
